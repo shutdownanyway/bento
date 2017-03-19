@@ -57,5 +57,4 @@ gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resour
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'devise'
 
-
 gem 'bootstrap', '~> 4.0.0.alpha6'
