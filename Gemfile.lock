@@ -76,6 +76,8 @@ GEM
     bootstrap (4.0.0.alpha6)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     bourbon (4.3.3)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -242,7 +244,9 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  autoprefixer-rails
   bootstrap (~> 4.0.0.alpha6)
+  bootstrap-sass (~> 3.2.0)
   byebug
   coffee-rails (~> 4.2)
   devise

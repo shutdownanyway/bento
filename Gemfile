@@ -58,3 +58,6 @@ gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'devise'
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
