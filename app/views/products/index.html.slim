@@ -1,5 +1,10 @@
 
 /! This is a comment? 
 = render partial: 'layouts/header'
-= render partial: 'product', collection: @products, locals: {full_details: false}
-== paginate @products
+.container
+  .row
+    .col-4 Categories
+    .col-8
+      .row
+        = render partial: 'product', collection: @products, locals: {full_details: false}
+      == paginate @products
