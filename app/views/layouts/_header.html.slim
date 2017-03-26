@@ -11,19 +11,27 @@ javascript:
   .collapse.navbar-collapse#navbarSupportedContent
     ul.navbar-nav.center-text.mr-auto
       li.nav-item 
+        a.nav-link href=root_path
+      li.nav-item 
+        a.nav-link href=root_path
+      li.nav-item 
+        a.nav-link href=root_path
+      li.nav-item 
+        a.nav-link href=root_path
+      li.nav-item 
         a.nav-link href=root_path Home
       li.nav-item
         a.nav-link href=root_path About
       li.nav-item
         a.nav-link href=contact_path Contact
-      li.nav-item.dropdown
-        a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="http://example.com" 
-          | Our Products
-        .dropdown-menu aria-labelledby="navbarDropdownMenuLink" 
-          a.dropdown-item href=root_path  All Products
-          a.dropdown-item href=new_products_path New Products
-          a.dropdown-item href=updated_products_path  Recently Updated
-          a.dropdown-item href=clearance_path  Sale
+      / li.nav-item.dropdown
+      /   a#navbarDropdownMenuLink.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="http://example.com" 
+      /     | Our Products
+      /   .dropdown-menu aria-labelledby="navbarDropdownMenuLink" 
+      /     a.dropdown-item href=root_path  All Products
+      /     a.dropdown-item href=new_products_path New Products
+      /     a.dropdown-item href=updated_products_path  Recently Updated
+      /     a.dropdown-item href=clearance_path  Sale
     form.form-inline.my-2.my-lg-0
         input.form-control.mr-sm-2 type="text" placeholder="Search"
         button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Search

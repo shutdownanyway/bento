@@ -1,7 +1,13 @@
-p = link_to 'All Products',  root_path
-p = link_to 'New Products',  new_products_path
-p = link_to 'Sale',  clearance_path
-p = link_to 'Recently Updated',  updated_products_path
+javascript:
+  $(document).ready(function() {
+    var pathname = window.location.pathname;
+    $('.list-group > li > a[href="'+pathname+'"]').parent().addClass('active');
+  })
+ul.list-group
+  li.list-group-item = link_to 'All Products',  root_path
+  li.list-group-item = link_to 'New Products',  new_products_path
+  li.list-group-item = link_to 'Recently Updated',  updated_products_path
+  li.list-group-item = link_to 'Sale',  clearance_path
 p Categories:
 = render partial: 'category/category', collection: @categories
     

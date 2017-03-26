@@ -35,7 +35,7 @@
  }
 
  .caption {
-    height: 130px;
+    height: 200px;
     overflow: hidden;
     // h4{
     //   white-space: nowrap;
@@ -51,4 +51,22 @@
     img {
         width: 100%;
     }
+}
+
+.list-group-item.active{
+    background-color: #ffe6e6;
+    border-color: #0275d8;
+    border-radius: 0.25rem;
+}
+
+.btn-outline-success {
+  background-color: #ffe6e6;
+  border-color: #0275d8;
+  color:#0275d8;
+}
+
+.btn-outline-success:hover {
+  background-color: #0275d8;
+  border-color: #0275d8;
+  color:white;
 }

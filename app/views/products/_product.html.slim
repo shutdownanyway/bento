@@ -4,10 +4,10 @@
     .caption
       h4 = product.name
       - if product.discount > 0
-        span style=("text-decoration: none; color: red;")
+        span style=("text-decoration: none; color: #ff6666;")
             = product.discount 
-            | % OFF
-        h4 style=("text-decoration: line-through; color: red;") 
+            | % OFF 
+        h4 style=("text-decoration: line-through; color: #ff6666;") 
           = number_to_currency product.price 
         h4 
           = number_to_currency (product.price - (product.price * product.discount / 100))
