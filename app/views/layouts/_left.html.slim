@@ -8,7 +8,9 @@ ul.list-group
   li.list-group-item = link_to 'New Products',  new_products_path
   li.list-group-item = link_to 'Recently Updated',  updated_products_path
   li.list-group-item = link_to 'Sale',  clearance_path
-p Categories:
-= render partial: 'category/category', collection: @categories
+.categories
+  p.text-center View by Category:
+  ul.list-group
+    = render partial: 'category/category', collection: @categories
     
       

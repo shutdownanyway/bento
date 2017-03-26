@@ -13,8 +13,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def categorized_products
-    @customers_alphabetized =  Product.where("created_at > ?", 1.day.ago)
-  end
+  # def categorized_products
+  #   @customers_alphabetized =  Product.where("created_at > ?", 1.day.ago)
+  # end
 
 end

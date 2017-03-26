@@ -1,4 +1,7 @@
-p = link_to category.name, category_path(category.id)
+li.list-group-item.justify-content-between 
+  = link_to category.name, category_path(category.id)
+  span.badge.badge-default.badge-pill 
+     = Product.where('category_id = ?', category.id).count
 
-    
+  
   

@@ -9,5 +9,9 @@ class CategoryController < ApplicationController
     @categories = Category.all
   end
 
+  def index
+    @products = @category.products
+  end
+
 
 end
