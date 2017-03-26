@@ -7,11 +7,8 @@ javascript:
 .jumbotron.text-center
       h1 Konoha Bento
       p Bento Boxes And Accessories from Konoha!
-nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+.nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
   .collapse.navbar-collapse#navbarSupportedContent
-    form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2 type="text" placeholder="Search"
-      button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Search
     ul.navbar-nav.center-text.mr-auto
       li.nav-item 
         a.nav-link href=root_path Home
@@ -27,5 +24,6 @@ nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
           a.dropdown-item href=new_products_path New Products
           a.dropdown-item href=updated_products_path  Recently Updated
           a.dropdown-item href=clearance_path  Sale
-     
-      
+    form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2 type="text" placeholder="Search"
+        button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Search

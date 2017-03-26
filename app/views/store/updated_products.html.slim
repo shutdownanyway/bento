@@ -2,11 +2,7 @@
 .container
   .row
     .col-4 
-      p = link_to 'All Products',  root_path
-      p = link_to 'New Products',  new_products_path
-      p Categories:
-      = render partial: 'category/category', collection: @categories
-      h2 hi
+      = render partial: 'layouts/left'
     .col-8
       .row
          = render partial: 'products/product', collection: @updated_products, locals: {full_details: false}

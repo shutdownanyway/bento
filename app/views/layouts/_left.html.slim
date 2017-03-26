@@ -1,0 +1,8 @@
+p = link_to 'All Products',  root_path
+p = link_to 'New Products',  new_products_path
+p = link_to 'Sale',  clearance_path
+p = link_to 'Recently Updated',  updated_products_path
+p Categories:
+= render partial: 'category/category', collection: @categories
+    
+      
