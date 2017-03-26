@@ -3,6 +3,9 @@
   p
     strong> Price:
     = number_to_currency product.price
+  p 
+    strong> Category:
+    = product.category.name
     - if full_details
         p = product.description
     - else

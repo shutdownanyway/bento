@@ -1,9 +1,17 @@
 class ProductsController < ApplicationController
   def index
-      @products = Product.all.page params[:page]
+  
+    @category = Category.params[:id]
+    @products = @category.product
+
+    @products = Product.all.page params[:page]
+    @categories = Category.all
+
   end
 
   def show
     @product = Product.find(params[:id])
   end
+
+
 end
