@@ -1,0 +1,13 @@
+= render partial: 'layouts/header'
+.container
+  .row
+    .col-4 
+      p = link_to 'All Products',  root_path
+      p = link_to 'New Products',  store_new_products_path
+      p Categories:
+      = render partial: 'category/category', collection: @categories
+      h2 hi
+    .col-8
+      .row
+         = render partial: 'products/product', collection: @new, locals: {full_details: false}
+      == paginate @products

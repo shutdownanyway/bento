@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'store/index'
 
   get 'category/index', to: 'category#index'
 
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'store#index'
 
-  get '/store/categorized_products', to: 'store#categorized_products'
+  get '/store/new_products', to: 'store#new_products'
+
 
 end

@@ -1,3 +1,10 @@
 = render partial: 'layouts/header'
-
-p CONTACT ME
+.container
+  .row
+    .col-4 
+      = render partial: 'category/category', collection: @categories
+    .col-8
+      .row
+        - @contacts.each do |contact|
+          p = contact.title
+          p = contact.text

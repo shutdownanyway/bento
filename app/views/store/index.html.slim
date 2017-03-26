@@ -1,10 +1,12 @@
-h1 Store#index
 = render partial: 'layouts/header'
 .container
   .row
     .col-4 
-      - @categories.each do |category|
-        p = link_to category.name, category_path(category.id)
+      p = link_to 'All Products',  root_path
+      p = link_to 'New Products',  store_new_products_path
+      p Categories:
+      = render partial: 'category/category', collection: @categories
+      h2 hi
     .col-8
       .row
         = render partial: 'products/product', collection: @products, locals: {full_details: false}

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-  
+
     @category = Category.params[:id]
     @products = @category.product
 
@@ -13,5 +13,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def categorized_products
+    @customers_alphabetized =  Product.where("created_at > ?", 1.day.ago)
+  end
 
 end
