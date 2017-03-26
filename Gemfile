@@ -64,3 +64,5 @@ gem 'autoprefixer-rails'
 
 # http://railscasts.com/episodes/254-pagination-with-kaminari
 gem 'kaminari'
+
+gem 'faker'
