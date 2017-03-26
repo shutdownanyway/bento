@@ -1,15 +1,26 @@
-.col
-  h2 = product.name
-  p
-    strong> Price:
-    = number_to_currency product.price
-  p 
-    strong> Category:
-    = product.category.name
-    - if full_details
-        p = product.description
-    - else
-        p = link_to 'Details', product
+.col-sm-4.col-lg-4.col-md-4
+  .thumbnail
+    img alt="" src="http://placehold.it/320x150" /
+    .caption
+      h4 = product.name
+      - if product.discount > 0
+        span style=("text-decoration: none; color: red;")
+            = product.discount 
+            | % OFF
+        h4 style=("text-decoration: line-through; color: red;") 
+          = number_to_currency product.price 
+        h4 
+          = number_to_currency (product.price - (product.price * product.discount / 100))
+      -else 
+        h4.float-right 
+          = number_to_currency product.price
+      p 
+        strong> Category:
+        = product.category.name
+        - if full_details
+            p = product.description
+        - else
+            p = link_to 'More Details', product
 
 
   
