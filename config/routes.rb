@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'store#index'
 
-  get '/store/new_products', to: 'store#new_products'
+  get 'new_products', to: 'store#new_products'
 
+  get 'clearance', to: 'store#sale'
 
+  get 'updated_products', to: 'store#updated_products'
 end

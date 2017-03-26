@@ -9,5 +9,5 @@
       h2 hi
     .col-8
       .row
-         = render partial: 'products/product', collection: @new, locals: {full_details: false}
+         = render partial: 'products/product', collection: @updated_products, locals: {full_details: false}
       == paginate @products
