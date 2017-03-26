@@ -6,5 +6,5 @@
     .col-8
       .row
          = render partial: 'products/product', collection: @new, locals: {full_details: false}
-      == paginate @products
+      == paginate @new
 = render partial: 'layouts/footer'

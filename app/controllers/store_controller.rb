@@ -7,20 +7,17 @@ class StoreController < ApplicationController
   end
 
   def new_products
-    @new =  Product.order(updated_at: :desc).where("created_at > ?", 1.day.ago)
-    @products = Product.order(updated_at: :desc).all.page params[:page]
+    @new =  Product.order(updated_at: :desc).where("created_at > ?", 1.day.ago).page(params[:page])
     @categories = Category.all
   end
 
   def updated_products
-    @updated_products =  Product.order(updated_at: :desc).where("updated_at> ?", 1.day.ago)
-    @products = Product.order(updated_at: :desc).all.page params[:page]
+    @updated_products =  Product.order(updated_at: :desc).where("updated_at> ?", 1.day.ago).page(params[:page])
     @categories = Category.all
   end
 
   def sale
-    @products_on_sale = Product.order(updated_at: :desc).where("discount > 0")
-    @products = Product.order(updated_at: :desc).all.page params[:page]
+    @products_on_sale = Product.order(updated_at: :desc).where("discount > 0").page(params[:page])
     @categories = Category.all
   end
 end
