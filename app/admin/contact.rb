@@ -13,6 +13,6 @@ ActiveAdmin.register Contact do
 # end
 menu label: "Contact Page"
 # menu parent: "Products"
-permit_params :title, :text
+permit_params :title, :text, :phone, :facebook, :twitter, :instagram, :email
 actions :all, except: [:new, :destroy]
 end
