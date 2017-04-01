@@ -9,21 +9,22 @@
            .col-8
               h2 = contact.title
               h6 = contact.text
-              p 
-                strong> Phone:
-                = contact.phone
-              p 
-                strong> Email:
-                = contact.email
-                 
-              ul.list-inline.contact
-                li.list-inline-item = link_to contact.facebook  
-                  .i.fa.fa-facebook-official.fa-3 aria-hidden="true" 
-                  |   Facebook
-                li.list-inline-item = link_to contact.twitter
-                  i.fa.fa-twitter.fa-fw aria-hidden="true" 
-                  |   Twitter
-                li.list-inline-item = link_to contact.instagram
-                  i.fa.fa-instagram.fa-fw aria-hidden="true" 
-                  |   Instagram
+              br
+              .contact-box
+                p 
+                  strong> Phone:
+                  = contact.phone
+                p 
+                  strong> Email:
+                  = contact.email   
+                ul.list-inline.contact
+                  li.list-inline-item = link_to contact.facebook  
+                    .i.fa.fa-facebook-official.fa-3 aria-hidden="true" 
+                    |   Facebook
+                  li.list-inline-item = link_to contact.twitter
+                    i.fa.fa-twitter.fa-fw aria-hidden="true" 
+                    |   Twitter
+                  li.list-inline-item = link_to contact.instagram
+                    i.fa.fa-instagram.fa-fw aria-hidden="true" 
+                    |   Instagram
 = render partial: 'layouts/footer'
