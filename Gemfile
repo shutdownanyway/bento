@@ -66,3 +66,5 @@ gem 'autoprefixer-rails'
 gem 'kaminari'
 
 gem 'faker'
+
+gem 'font-awesome-rails'
