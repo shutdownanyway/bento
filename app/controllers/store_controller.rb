@@ -33,6 +33,12 @@ class StoreController < ApplicationController
     # @visit_count = session[:visit_count]
    end
 
+   def remove_from_cart
+     id = params[:id].to_i
+     session[:cart_list].delete(id)
+     redirect_back(fallback_location: root_path)
+   end
+
    def cart_list
     @categories = Category.all
     Product.find(session[:cart_list])

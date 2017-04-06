@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :store, only: [:index, :show] do #[:index, :show]
     member do #collection would be collection of customers
       post :add_to_cart #POST /customers/:id/remember_to_call/
+      post :remove_from_cart
       #post :mark_as_called #POST /customers/:id/mark_as_called/
     end
   end

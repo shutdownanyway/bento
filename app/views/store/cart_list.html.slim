@@ -8,4 +8,5 @@
         - if cart_list.any?
            - cart_list.each do |item|
             p = item.name
+            = button_to("Remove from Cart", remove_from_cart_store_path(item), method: :post, class: "btn btn-primary btn-sm")
 = render partial: 'layouts/footer'
