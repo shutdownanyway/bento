@@ -25,12 +25,15 @@
                                 h5.nomargin = item.name
                                 p = item.description
                           td data-th="Price" = number_to_currency(item.price)
-                          td data-th="Quantity" 
-                            input.form-control.text-center type="number" value="1" /
-                          td.text-center data-th="Subtotal"  = number_to_currency(item.price * item.discount)
+                          td data-th="Quantity"  
+                             = form_for 'item', :url => {:controller => 'store', :action => 'update_quantity', 
+                               id: item, :class => 'form-control text-center', :type => 'number', method: :post} do |f|
+                                .field
+                                  = f.number_field :quantity, :value => item.quantity
+                                  = submit_tag 'Update', 'data-disable-with' => false
+                          td.text-center data-th="Subtotal"  = number_to_currency(item.price * item.quantity)
                           td.actions data-th="" 
-                            button.btn.btn-info.btn-sm
-                              i.fa.fa-refresh
+                          td
                             button.btn.btn-danger.btn-sm = link_to(remove_from_cart_store_path(item), method: :post)
                               i.fa.fa-trash-o
                 tfoot

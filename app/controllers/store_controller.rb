@@ -31,6 +31,11 @@ class StoreController < ApplicationController
     redirect_back(fallback_location: root_path)
     # session[:visit_count] += 1
     # @visit_count = session[:visit_count]
+    product = Product.find(session[:cart_list])
+   
+    product.each do |item|
+      item.update_columns(quantity: 1)
+    end
    end
 
    def remove_from_cart
@@ -41,8 +46,25 @@ class StoreController < ApplicationController
 
    def cart_list
     @categories = Category.all
-    Product.find(session[:cart_list])
 
+    Product.find(session[:cart_list])
+    # product = Product.find(session[:cart_list])
+    #
+    #  product.each do |item|
+    #    item.update_columns(quantity: 1)
+    #  end
+
+   end
+
+   def update_quantity
+    #  product = Product.find(session[:cart_list])
+     #
+    #   product.each do |item|
+    #     item.update_columns(quantity: quantity)
+    #   end
+   @line_item = Product.find(params[:id])
+   @line_item.quantity = params[:item][:quantity]
+   @line_item.update_columns(quantity: @line_item.quantity)
    end
 
   private
