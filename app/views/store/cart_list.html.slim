@@ -6,7 +6,43 @@
     .col-8
       .row
         - if cart_list.any?
-           - cart_list.each do |item|
-            p = item.name
-            = button_to("Remove from Cart", remove_from_cart_store_path(item), method: :post, class: "btn btn-primary btn-sm")
+            table#cart.table.table-hover.table-condensed
+                thead
+                  tr
+                    th style="width:50%"  Product
+                    th style="width:10%"  Price
+                    th style="width:8%"  Quantity
+                    th.text-center style="width:22%"  Subtotal
+                    th style="width:10%" 
+                tbody    
+                  - cart_list.each do |item|
+                        tr
+                          td data-th="Product" 
+                            .row
+                              / .col-sm-2.hidden-xs
+                              /   img.img-responsive alt="..." src="http://placehold.it/100x100" /
+                              .col-sm-10
+                                h5.nomargin = item.name
+                                p = item.description
+                          td data-th="Price" = number_to_currency(item.price)
+                          td data-th="Quantity" 
+                            input.form-control.text-center type="number" value="1" /
+                          td.text-center data-th="Subtotal"  = number_to_currency(item.price * item.discount)
+                          td.actions data-th="" 
+                            button.btn.btn-info.btn-sm
+                              i.fa.fa-refresh
+                            button.btn.btn-danger.btn-sm = link_to(remove_from_cart_store_path(item), method: :post)
+                              i.fa.fa-trash-o
+                tfoot
+                    tr
+                      td
+                        a.btn.btn-warning href= root_path
+                          | Continue Shopping
+                      td.hidden-xs colspan="2" 
+                      td.hidden-xs.text-center
+                        strong Total $1.99
+                      td
+                        a.btn.btn-success.btn-block href="#" 
+                          | Checkout
+                
 = render partial: 'layouts/footer'
