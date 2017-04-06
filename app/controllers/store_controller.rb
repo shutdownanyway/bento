@@ -1,4 +1,6 @@
 class StoreController < ApplicationController
+  before_action :initialize_session
+  # before_action :increment_visit_count
   def index
     @categories = Category.all
 
@@ -20,4 +22,40 @@ class StoreController < ApplicationController
     @products_on_sale = Product.order(updated_at: :desc).where("discount > 0").page(params[:page])
     @categories = Category.all
   end
+
+  def add_to_cart
+    id = params[:id].to_i
+    session[:cart_list] << id unless session[:cart_list].include?(id)
+    #session[:added_to_cart] +=1
+    #@cart_items = session[:added_to_cart]
+    redirect_back(fallback_location: root_path)
+    # session[:visit_count] += 1
+    # @visit_count = session[:visit_count]
+   end
+
+   def cart_list
+    @categories = Category.all
+    Product.find(session[:cart_list])
+
+   end
+
+  private
+
+  def initialize_session
+    # session[:visit_count] ||= 0
+    session[:cart_list] ||= []
+    #session[:added_to_cart] ||= 0
+  end
+
+  #  def increment_visit_count
+  #    session[:visit_count] += 1
+  #    @visit_count = session[:visit_count]
+  #  end
+
+
+   def number_of_cart_items
+     @cart_list_count = Product.find(session[:cart_list]).count
+   end
+   helper_method :cart_list
+   helper_method :number_of_cart_items
 end
