@@ -21,6 +21,8 @@
             p = product.description
         - else
             p = link_to 'More Details', product
+      = button_to("Add to Cart", product, method: :post, class: "btn btn-primary btn-sm")
+        
 
 
   
