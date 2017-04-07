@@ -8,6 +8,11 @@ class StoreController < ApplicationController
 
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @categories = Category.all
+  end
+
   def new_products
     @new =  Product.order(updated_at: :desc).where("created_at > ?", 1.day.ago).page(params[:page])
     @categories = Category.all

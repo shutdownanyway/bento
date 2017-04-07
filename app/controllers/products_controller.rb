@@ -14,6 +14,19 @@ class ProductsController < ApplicationController
     @categories = Category.all
   end
 
+
+  # def cart_list
+  #
+  #
+  #     Product.find(session[:cart_list])
+  #     # product = Product.find(session[:cart_list])
+  #     #
+  #     #  product.each do |item|
+  #     #    item.update_columns(quantity: 1)
+  #     #  end
+  #
+  #   end
+
   # def add_to_cart
   #   id = params[:id].to_i
   #   session[:cart_list] << id unless session[:cart_list].include?(id)
