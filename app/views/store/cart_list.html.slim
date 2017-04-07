@@ -31,7 +31,7 @@
                                 .field
                                   = f.number_field :quantity, :value => item.quantity
                                   = submit_tag 'Update', 'data-disable-with' => false
-                          td.text-center data-th="Subtotal"  = number_to_currency(item.price * item.quantity)
+                          td.text-center data-th="Subtotal"  = number_to_currency(item.quantity * item.price)
                           td.actions data-th="" 
                           td
                             button.btn.btn-danger.btn-sm = link_to(remove_from_cart_store_path(item), method: :post)

@@ -32,10 +32,13 @@ class StoreController < ApplicationController
     # session[:visit_count] += 1
     # @visit_count = session[:visit_count]
     product = Product.find(session[:cart_list])
-   
+
     product.each do |item|
       item.update_columns(quantity: 1)
+
     end
+    @line_item = 1
+
    end
 
    def remove_from_cart
@@ -65,6 +68,7 @@ class StoreController < ApplicationController
    @line_item = Product.find(params[:id])
    @line_item.quantity = params[:item][:quantity]
    @line_item.update_columns(quantity: @line_item.quantity)
+    redirect_back(fallback_location: root_path)
    end
 
   private
