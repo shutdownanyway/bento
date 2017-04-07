@@ -18,7 +18,7 @@
 #   t.decimal  "discount"
 #   t.integer  "category_id"
 # Product.create(name: "Blue Bento", description:)
-# 
+#
 # 3.times do
 #   p = Product.new
 #   p.name  = Faker::Commerce.unique.product_name
@@ -29,3 +29,9 @@
 #   p.category_id = 2
 #   p.save
 # end
+
+
+# OrderStatus.create! id: 1, status: "Pending"
+# OrderStatus.create! id: 2, status: "Paid"
+# OrderStatus.create! id: 3, status: "Shipped"
+# OrderStatus.create! id: 4, status: "Cancelled"
