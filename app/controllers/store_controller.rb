@@ -39,7 +39,8 @@ class StoreController < ApplicationController
     product = Product.find(session[:cart_list])
 
     product.each do |item|
-      item.update_columns(quantity: 1)
+      LineItem.create(product_id: item.id, price: item.price, quantity: 1, total: 2, session: request.session.id )
+      #item.update_columns(quantity: 1)
 
     end
     @line_item = 1
@@ -49,6 +50,15 @@ class StoreController < ApplicationController
    def remove_from_cart
      id = params[:id].to_i
      session[:cart_list].delete(id)
+     line = LineItem.where('product_id = ?', id)
+     line.each do |item|
+       if item.session == request.session.id
+         item.destroy
+       end
+     end
+    # @line.destroy
+     #@line_item.destroy(id)
+    # @line_item.save
      redirect_back(fallback_location: root_path)
    end
 
