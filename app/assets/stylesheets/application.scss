@@ -136,8 +136,40 @@ footer.text-center{
 .btn-primary {
     background-color: #31b0d5;
 }
-
+/*delete button  */
 i.fa.fa-trash-o
 {
+  color: #d9534f;
+}
+i.fa.fa-trash-o:hover
+{
   color: white;
+}
+/*quantity */
+input
+{
+  border-radius: 0.25rem;
+    margin-top: 5px;
+}
+
+input#item_quantity
+{
+  width:70px;
+  text-align: center;
+}
+
+.btn-danger {
+
+    background-color: #ffe6e6;
+    border-color: #d9534f;
+}
+
+/*continue shopping*/
+.btn-warning {
+    background-color: #5bc0de;
+    border-color: #0275d8;
+}
+.btn-warning:hover{
+    background-color: #0275d8;
+  
 }
