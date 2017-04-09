@@ -1,0 +1,23 @@
+  tr
+    td data-th="Product" 
+      .row
+        .col-sm-10
+          h5.nomargin = product.name
+          p = product.description
+    td data-th="Price" = number_to_currency(line_item.price.round(2) - (line_item.price.round(2) * product.discount/ 100))
+    td data-th="Quantity"  
+       = form_for 'line_item', remote: true  do |f|
+           .field
+             = f.number_field :quantity, :value => line_item.quantity.to_i, class: "form-control", min: 1
+             = f.hidden_field :product_id, value: product.id
+             = submit_tag 'Update', 'data-disable-with' => false 
+       td.text-center data-th="Subtotal"  = number_to_currency(line_item.quantity * (line_item.price.round(2) - (line_item.price.round(2) * product.discount/ 100)))
+    / - @total << line_item.quantity * (line_item.price.round(2) - (line_item.price.round(2) * product.discount/ 100))
+    td.actions data-th="" 
+    td
+      button.btn.btn-danger.btn-sm = link_to(line_item, method: :delete)
+        i.fa.fa-trash-o
+
+  / <%= link_to "Delete", order_item, { data: { confirm: "Are you sure you wish to delete the product '#{order_item.product.name}' from your cart?" },
+  /  method: :delete, remote: true, class: "btn btn-danger" } %>
+                

@@ -20,23 +20,24 @@
                         tr
                           td data-th="Product" 
                             .row
-                              / .col-sm-2.hidden-xs
+                              .col-sm-2.hidden-xs
                               /   img.img-responsive alt="..." src="http://placehold.it/100x100" /
                               .col-sm-10
-                                h5.nomargin = item.name
-                                p = item.description
-                          td data-th="Price" = number_to_currency(item.price.round(2) - (item.price.round(2) * item.discount/ 100))
+                                h5.nomargin = item.product.name
+                                p = item.product.description
+                          td data-th="Price" = number_to_currency(item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100))
                           td data-th="Quantity"  
                              = form_for 'item', :url => {:controller => 'store', :action => 'update_quantity', 
-                               id: item,  :type => 'number', method: :post} do |f|
+                               id: item,  method: :post} do |f|
                                 .field
-                                  = f.number_field :quantity, :value => item.quantity 
+                                  = f.number_field :quantity, :value => item.quantity
+                                  = f.hidden_field :product_id, value: item.product_id
                                   = submit_tag 'Update', 'data-disable-with' => false
-                          td.text-center data-th="Subtotal"  = number_to_currency(item.quantity * (item.price.round(2) - (item.price.round(2) * item.discount/ 100)))
-                          - @total << item.quantity * (item.price.round(2) - (item.price.round(2) * item.discount/ 100))
+                             td.text-center data-th="Subtotal"  = number_to_currency(item.quantity * (item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100)))
+                          - @total << item.quantity * (item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100))
                           td.actions data-th="" 
                           td
-                            button.btn.btn-danger.btn-sm = link_to(remove_from_cart_store_path(item), method: :post)
+                            button.btn.btn-danger.btn-sm = link_to(remove_from_cart_store_path(item.product_id), method: :post)
                               i.fa.fa-trash-o
                 tfoot
                     tr
@@ -51,5 +52,7 @@
                       td
                         a.btn.btn-success.btn-block href="#" 
                           | Checkout
+        - else
+            h4 Your Cart Is Empty
                 
 = render partial: 'layouts/footer'
