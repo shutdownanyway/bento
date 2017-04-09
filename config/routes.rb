@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get 'category/index', to: 'category#index'
 
   get 'contact', to: 'contact#index', only: [:index]

@@ -5,7 +5,7 @@
       = render partial: 'layouts/left'
     .col-8
       .row
-        .col-md-12
+        .col-md-12.invoice
             /! REVIEW ORDER
             .panel.panel-default
               .panel-heading.text-center
@@ -33,7 +33,7 @@
                           td data-th="Quantity" = item.quantity
                           td.text-center data-th="Subtotal"  = number_to_currency(item.quantity * (item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100)))
                           - @total << item.quantity * (item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100))
-      .col-md-12
+      .col-md-12.invoice
             .panel-body
               .col-md-12
                 strong Subtotal 
@@ -62,7 +62,7 @@
               .col-md-12
                 strong Order Total
                 .pull-right
-                  span = number_to_currency(current_order.total)
+                  strong = number_to_currency(current_order.total)
                 hr/
               .col-md-12.text-center style='height:100px'
                 button#singlebutton.btn.btn-primary name="singlebutton"  Process Payment
