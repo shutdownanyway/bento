@@ -87,6 +87,9 @@ class StoreController < ApplicationController
       @order.gst = province.gst
       @order.pst = province.pst
       @order.hst = province.hst
+      shipping = @order.shipping
+      subtotal = @order.subtotal
+      @order.total = province.gst + province.pst + province.hst + shipping + subtotal
       @order.save
    end
 
