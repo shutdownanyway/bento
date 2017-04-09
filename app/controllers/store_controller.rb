@@ -85,12 +85,18 @@ class StoreController < ApplicationController
       province_id = params[:order][:province_id].to_i
       @order.province_id = province_id
       province = Province.find(province_id)
-      @order.gst = province.gst
-      @order.pst = province.pst
-      @order.hst = province.hst
+      gst =  province.gst / 100
+      pst =  province.pst / 100
+      hst =  province.hst / 100
       shipping = @order.shipping
       subtotal = @order.subtotal
-      @order.total = province.gst + province.pst + province.hst + shipping + subtotal
+      order_gst = subtotal * gst
+      order_pst = subtotal * pst
+      order_hst = subtotal * hst
+      @order.gst = order_gst
+      @order.pst = order_pst
+      @order.hst = order_hst
+      @order.total =  @order.gst  +  @order.pst + @order.hst + shipping + subtotal
       @order.save
       redirect_to payment_url
    end
