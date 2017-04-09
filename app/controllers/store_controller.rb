@@ -63,7 +63,8 @@ class StoreController < ApplicationController
 #  end
    end
    def checkout
-
+     id = params[:id].to_i
+        @order = current_order
    end
 
    def remove_from_cart

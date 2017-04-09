@@ -51,7 +51,7 @@
                         strong =  number_to_currency(@total.reduce(:+))
                           
                       td
-                        a.btn.btn-success.btn-block href="#" 
+                        a.btn.btn-success.btn-block href=checkout_path(current_order) 
                           | Checkout
         - else
             p.text-center

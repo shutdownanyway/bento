@@ -30,6 +30,6 @@ Rails.application.routes.draw do
   get 'updated_products', to: 'store#updated_products'
 
   get 'cart_list', to: 'store#cart_list'
-
+  get 'checkout', to: 'store#checkout'
 
 end

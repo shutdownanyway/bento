@@ -1,0 +1,62 @@
+= render partial: 'layouts/header'
+.container
+  .row
+    .col-4 
+      = render partial: 'layouts/left'
+    .col-8
+      .row
+       .col-lg-6.col-md-6.col-sm-6.col-xs-12.col-md-pull-6.col-sm-pull-6
+          .panel.panel-info
+            .panel-heading 
+            .panel-body
+              .form-group
+                .col-md-12
+                  h4 Shipping Information
+              .form-group
+                .col-md-12
+                  strong Your Name:
+                  input.form-control name="name" type="text" value="" /
+              .form-group
+                .col-md-12
+                  strong Address:
+                .col-md-12
+                  input.form-control name="address" type="text" value="" /
+              .form-group
+                .col-md-12
+                  strong City:
+                .col-md-12
+                  input.form-control name="city" type="text" value="" /  
+              .form-group
+                .col-md-6.col-xs-12
+                  strong Province:
+                  select.form-control name="province" 
+                    option value=""  Province:
+                    option value="01"  01
+                    option value="02"  02
+                    option value="03"  03
+                    option value="04"  04
+                    option value="05"  05
+                    option value="06"  06
+                    option value="07"  07
+                    option value="08"  08
+                    option value="09"  09
+                    option value="10"  10
+                    option value="11"  11
+                    option value="12"  12
+                .span1
+                .col-md-6.col-xs-12
+                  strong Postal Code:
+                  input.form-control name="postal_code" type="text" value="" /
+              .form-group
+                .col-md-12
+                  strong Phone Number:
+                .col-md-12
+                  input.form-control name="phone_number" type="text" value="" /
+              .form-group
+                .col-md-12
+                  strong Email Address:
+                .col-md-12
+                  input.form-control name="email_address" type="text" value="" /
+
+                
+= render partial: 'layouts/footer'
