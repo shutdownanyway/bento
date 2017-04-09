@@ -66,7 +66,15 @@ class StoreController < ApplicationController
    end
    def checkout
      @provinces = Province.all
-    @order = current_order
+     @order = current_order
+     @line_items = @order.line_items
+     total = Array.new
+     @line_items.each do |item|
+       total << item.total
+     end
+     subtotal = total.reduce(:+)
+     @order.subtotal = subtotal.to_f
+     @order.save
    end
 
    def calculate_total
