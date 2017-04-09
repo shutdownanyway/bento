@@ -35,3 +35,17 @@
 # OrderStatus.create! id: 2, status: "Paid"
 # OrderStatus.create! id: 3, status: "Shipped"
 # OrderStatus.create! id: 4, status: "Cancelled"
+
+#Province.create! name: "Manitoba", gst: 5, pst: 8, hst: 0
+# Province.create! name: "Alberta", gst: 5, pst: 0, hst: 0
+# Province.create! name: "British Columbia", gst: 5, pst: 7, hst: 0
+# Province.create! name: "New Brunswick", gst: 0, pst: 0, hst: 15
+# Province.create! name: "Newfoundland and Labrador", gst: 0, pst: 0, hst: 15
+# Province.create! name: "Northwest Territories", gst: 5, pst: 0, hst: 0
+# Province.create! name: "Nova Scotia", gst: 0, pst: 0, hst: 15
+# Province.create! name: "Nunavut", gst: 5, pst: 0, hst: 0
+# Province.create! name: "Ontario", gst: 0, pst: 0, hst: 13
+# Province.create! name: "Prince Edward Island", gst: 0, pst: 0, hst: 15
+# Province.create! name: "Quebec", gst: 5, pst: 9.975, hst: 0
+# Province.create! name: "Saskatchewan", gst: 5, pst: 5, hst: 0
+# Province.create! name: "Yukon", gst: 5, pst: 0, hst: 0
