@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :order_status
-  has_many :line_items
+  belongs_to :provinces
+  has_many :line_items, dependent: :destroy
   #before_save :set_order_status
   #before_save :update_subtotal
 #

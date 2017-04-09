@@ -40,6 +40,7 @@ class StoreController < ApplicationController
       @order = current_order
     @line_item = @order.line_items.new(quantity: 1, product_id: id, price: price, total: price, session: request.session.id )
      @order.order_status_id = 1
+     @order.shipping = 5
       @order.save
       session[:order_id] = @order.id
     redirect_back(fallback_location: root_path)
