@@ -32,11 +32,13 @@ class StoreController < ApplicationController
 
   def add_to_cart
     id = params[:id].to_i
+    product = Product.find(id)
+    price = product.price
     session[:cart_list] << id unless session[:cart_list].include?(id)
     #session[:added_to_cart] +=1
     #@cart_items = session[:added_to_cart]
       @order = current_order
-    @line_item = @order.line_items.new(quantity: 1, product_id: id)
+    @line_item = @order.line_items.new(quantity: 1, product_id: id, price: price, total: price, session: request.session.id )
      @order.order_status_id = 1
       @order.save
       session[:order_id] = @order.id
@@ -59,6 +61,9 @@ class StoreController < ApplicationController
     #   end
 
 #  end
+   end
+   def checkout
+
    end
 
    def remove_from_cart
@@ -153,10 +158,16 @@ class StoreController < ApplicationController
       @order = current_order
       @line_item = @order.line_items.find(params[:id])
     #  @line_item.quantity = params[:item][:quantity]
-      @line_item.update_columns(quantity: params[:item][:quantity])
+
+      quantity = params[:item][:quantity].to_i
+      price = params[:item][:price].to_f
+      total = quantity * price
+      @line_item.update_columns(quantity: quantity, price: price, total: total)
       @line_items = @order.line_items
     redirect_back(fallback_location: root_path)
    end
+
+
 
   private
 
