@@ -63,6 +63,7 @@ class StoreController < ApplicationController
 #  end
    end
    def checkout
+     @provinces = Province.all
      id = params[:id].to_i
         @order = current_order
    end
