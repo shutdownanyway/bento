@@ -37,6 +37,7 @@ class StoreController < ApplicationController
     #@cart_items = session[:added_to_cart]
       @order = current_order
     @line_item = @order.line_items.new(quantity: 1, product_id: id)
+     @order.order_status_id = 1
       @order.save
       session[:order_id] = @order.id
     redirect_back(fallback_location: root_path)

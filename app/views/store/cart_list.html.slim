@@ -53,6 +53,7 @@
                         a.btn.btn-success.btn-block href="#" 
                           | Checkout
         - else
-            h4 Your Cart Is Empty
+            p.text-center
+              | There are no items in your shopping cart.  Please #{link_to "go back", root_path} and add some items to your cart.
                 
 = render partial: 'layouts/footer'
