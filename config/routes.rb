@@ -31,5 +31,5 @@ Rails.application.routes.draw do
 
   get 'cart_list', to: 'store#cart_list'
   get 'checkout', to: 'store#checkout'
-
+  get 'payment', to: 'store#payment'
 end

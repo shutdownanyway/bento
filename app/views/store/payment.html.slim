@@ -1,0 +1,63 @@
+= render partial: 'layouts/header'
+.container
+  .row
+    .col-4 
+      = render partial: 'layouts/left'
+    .col-8
+      .row
+        .col-md-12
+            /! REVIEW ORDER
+            .panel.panel-default
+              .panel-heading.text-center
+                h4 Review Order
+        - if cart_list.any?
+            - @total = Array.new
+            table#cart.table.table-hover.table-condensed
+                thead
+                  tr
+                    th.text-center style='width: 50%;' Item
+                    th Price
+                    th Quantity
+                    th.text-center Total
+                    th
+                tbody    
+                  - cart_list.each do |item|
+                        tr
+                          td data-th="Product" 
+                            .row
+                              .col-sm-2.hidden-xs
+                              /   img.img-responsive alt="..." src="http://placehold.it/100x100" /
+                              .col-sm-10
+                                h6.nomargin = item.product.name
+                          td data-th="Price" = number_to_currency(item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100))
+                          td data-th="Quantity" = item.quantity
+                          td.text-center data-th="Subtotal"  = number_to_currency(item.quantity * (item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100)))
+                          - @total << item.quantity * (item.product.price.round(2) - (item.product.price.round(2) * item.product.discount/ 100))
+                          td.actions data-th="" 
+      .col-md-12
+            .panel-body
+              .col-md-12
+                strong Subtotal (# item)
+                .pull-right
+                  span $
+                  span 200.00
+              .col-md-12
+                strong Tax
+                .pull-right
+                  span $
+                  span 200.00
+              .col-md-12
+                small Shipping
+                .pull-right
+                  span -
+                hr/
+              .col-md-12
+                strong Order Total
+                .pull-right
+                  span $
+                  span 150.00
+                hr/
+              .col-md-12.text-center style='height:100px'
+                button#singlebutton.btn.btn-primary name="singlebutton"  Process Payment
+                
+= render partial: 'layouts/footer'

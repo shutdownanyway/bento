@@ -65,6 +65,7 @@ class StoreController < ApplicationController
 #  end
    end
    def checkout
+     @categories = Category.all
      @provinces = Province.all
      @order = current_order
      @line_items = @order.line_items
@@ -91,6 +92,13 @@ class StoreController < ApplicationController
       subtotal = @order.subtotal
       @order.total = province.gst + province.pst + province.hst + shipping + subtotal
       @order.save
+      redirect_to payment_url
+   end
+
+   def payment
+    @categories = Category.all
+    @order = current_order
+   @line_items = @order.line_items
    end
 
    def remove_from_cart
