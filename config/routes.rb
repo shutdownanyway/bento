@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post :add_to_cart #POST /customers/:id/remember_to_call/
       post :remove_from_cart
       post :update_quantity
-      post :checkout
+      post :calculate_total
       #post :mark_as_called #POST /customers/:id/mark_as_called/
     end
   end

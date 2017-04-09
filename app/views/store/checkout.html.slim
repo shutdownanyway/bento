@@ -37,15 +37,13 @@
                   strong Postal Code:
                   input.form-control name="postal_code" type="text" value="" /
               .form-group
-                .col-md-12
-                  strong Phone Number:
-                .col-md-12
-                  input.form-control name="phone_number" type="text" value="" /
-              .form-group
-                .col-md-12
-                  strong Email Address:
-                .col-md-12
-                  input.form-control name="email_address" type="text" value="" /
+                .col-md-6.col-sm-6.col-xs-12
+                  button.btn.btn-primary.btn-submit-fix type="submit" = link_to( "Proceed to Payment", calculate_total_store_path(current_order), method: :post)
+                  = form_for 'order', :url => {:controller => 'store', :action => 'calculate_total', 
+                    id: current_order.id,  method: :post} do |f|
+                     .field
+                         = f.collection_select :province_id, Province.all, :id, :name
+                         = submit_tag 'Update', 'data-disable-with' => false
 
                 
 = render partial: 'layouts/footer'

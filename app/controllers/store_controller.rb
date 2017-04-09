@@ -40,6 +40,7 @@ class StoreController < ApplicationController
       @order = current_order
     @line_item = @order.line_items.new(quantity: 1, product_id: id, price: price, total: price, session: request.session.id )
      @order.order_status_id = 1
+
      @order.shipping = 5
       @order.save
       session[:order_id] = @order.id
@@ -65,8 +66,20 @@ class StoreController < ApplicationController
    end
    def checkout
      @provinces = Province.all
-     id = params[:id].to_i
-        @order = current_order
+    @order = current_order
+   end
+
+   def calculate_total
+      @provinces = Province.all
+       id = params[:id].to_i
+       @order = current_order
+      province_id = params[:order][:province_id].to_i
+      @order.province_id = province_id
+      province = Province.find(province_id)
+      @order.gst = province.gst
+      @order.pst = province.pst
+      @order.hst = province.hst
+      @order.save
    end
 
    def remove_from_cart
