@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'},  controllers: {
-        sessions: 'users/sessions'
-      }
+  devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'}
   get 'category/index', to: 'category#index'
 
   get 'contact', to: 'contact#index', only: [:index]
