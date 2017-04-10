@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'},  controllers: {
+        sessions: 'users/sessions'
+      }
   get 'category/index', to: 'category#index'
 
   get 'contact', to: 'contact#index', only: [:index]
@@ -33,4 +35,15 @@ Rails.application.routes.draw do
   get 'cart_list', to: 'store#cart_list'
   get 'checkout', to: 'store#checkout'
   get 'payment', to: 'store#payment'
+
+   devise_scope :user do
+   get 'logout' => 'devise/sessions#destroy'
+ end
+#
+# devise_for :users, skip: [:sessions]
+# as :user do
+#   get 'signin', to: 'devise/sessions#new', as: :new_user_session
+#   post 'signin', to: 'devise/sessions#create', as: :user_session
+#   delete 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session
+# end
 end

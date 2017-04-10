@@ -208,6 +208,9 @@ class StoreController < ApplicationController
     redirect_back(fallback_location: root_path)
    end
 
+  def sign_out
+      redirect_back(fallback_location: root_path)
+  end
 
 
   private
