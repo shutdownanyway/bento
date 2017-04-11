@@ -33,6 +33,9 @@ javascript:
       /     a.dropdown-item href=updated_products_path  Recently Updated
       /     a.dropdown-item href=clearance_path  Sale
     - if user_signed_in?
+      a.btn.btn-info.btn-lg href=profile_path 
+        span.glyphicon.glyphicon-shopping-cart
+        | My Profile 
       a.btn.btn-info.btn-lg href=destroy_user_session_path 
         span.glyphicon.glyphicon-shopping-cart
         | Log Out 

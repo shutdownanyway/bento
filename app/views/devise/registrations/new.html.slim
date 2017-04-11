@@ -1,16 +1,44 @@
 = render partial: 'layouts/header'
 .container
   .row
-    / .col-4 
-      / = render partial: 'layouts/left'
-    .col-12.text-center
+     .col-4 
+       = render partial: 'layouts/left'
+       - @categories = Category.all
+       - @categories.each do |category|
+           li.list-group-item.justify-content-between 
+             = link_to category.name, category_path(category.id)
+             span.badge.badge-default.badge-pill 
+                = Product.where('category_id = ?', category.id).count
+     .col-8
       h2 Sign up
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
         .field
+          = f.label :name
+          br/
+          = f.text_field :name, autofocus: true
+        .field
           = f.label :email
           br/
-          = f.email_field :email, autofocus: true
+          = f.email_field :email
+        .field
+          = f.label :address
+          br/
+          = f.text_field :address
+        .field
+          = f.label :city
+          br/
+          = f.text_field :city
+        .field
+          = f.label :postal_code
+          br/
+          = f.text_field :postal_code
+        .field
+          = f.label :province
+          br /
+          = f.collection_select(:province_id, Province.all, :id, :name,{}, {:class=>'form-control text-center'})
+          br / 
+          br /
         .field
           = f.label :password
           - if @minimum_password_length

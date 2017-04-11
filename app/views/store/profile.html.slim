@@ -1,0 +1,29 @@
+= render partial: 'layouts/header'
+.container
+  .row
+    .col-4 
+      = render partial: 'layouts/left'
+    .col-8
+      .row
+       .col-lg-6.col-md-6.col-sm-6.col-xs-12.col-md-pull-6.col-sm-pull-6
+          .panel.panel-info
+            .panel-heading 
+            .panel-body
+              .form-group
+                .col-md-12
+                  h4 Shipping Information
+                  = form_for @user, :url => {:controller => 'registrations', :action => 'update', 
+                    id: current_user.id,  method: :post} do |f|
+                    .field
+                      .form-group
+                        .col-md-12
+                          strong.f.label Your Name:
+                          = f.text_field :name, :class => 'form-control'
+                          
+                    .field
+                          /= f.collection_select(:province_id, Province.all, :id, :name,{}, {:class=>'form-control'})
+                          = submit_tag 'Proceed to Payment', 'data-disable-with' => false
+                    
+
+                
+= render partial: 'layouts/footer'

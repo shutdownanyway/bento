@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_order
+     before_action :configure_permitted_parameters, if: :devise_controller?
 
     def current_order
       if !session[:order_id].nil?
@@ -10,6 +11,16 @@ class ApplicationController < ActionController::Base
       end
     end
    @categories = Category.all
+
+
+
+ protected
+
+ def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:account_updat) do |user_params|
+    user_params.permit(:name, :email)
+  end
+end
     private
 
   # Overwriting the sign_out redirect path method

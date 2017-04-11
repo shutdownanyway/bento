@@ -1,6 +1,7 @@
 class StoreController < ApplicationController
   before_action :initialize_session
-  attr_accessor :pro
+  #before_filter :configure_permitted_parameters, if: :devise_controller?
+#  attr_accessor :pro
   # before_action :increment_visit_count
   def index
     @categories = Category.all
@@ -208,8 +209,22 @@ class StoreController < ApplicationController
     redirect_back(fallback_location: root_path)
    end
 
-  def sign_out
-      redirect_back(fallback_location: root_path)
+  # def sign_out
+  #     redirect_back(fallback_location: root_path)
+  # end
+
+  def profile
+    @categories = Category.all
+    @provinces = Province.all
+    @user = User.find(current_user.id)
+  end
+
+  def save_profile
+    @user = User.find(current_user.id)
+    #@user.name = params[:name].to_s
+    name =  params[:name].to_s
+    @user.update_columns(name: name)
+  #  @user.save
   end
 
 
@@ -234,6 +249,9 @@ class StoreController < ApplicationController
    def line_item_params
      params.require(:item).permit(:quantity, :product_id)
   end
+  # def configure_permitted_parameters
+  #    devise_parameter_sanitizer.for(:account_update) << :name ## add the attributes you want to permit
+  # end
    helper_method :cart_list
    helper_method :number_of_cart_items
 end
