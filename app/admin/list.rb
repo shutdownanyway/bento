@@ -12,8 +12,5 @@ ActiveAdmin.register List do
 #   permitted
 # end
 menu label: "Customers With Orders"
-index do
-  selectable_column
-  column "Title"
-end
+#scope ("Customers with Orders") { |user| user.joins(:orders).group("id").having("count(orders.id) > 0")}
 end
