@@ -41,7 +41,9 @@ class StoreController < ApplicationController
       @order = current_order
     @line_item = @order.line_items.new(quantity: 1, product_id: id, price: price, total: price, session: request.session.id )
      @order.order_status_id = 1
-
+     if user_signed_in?
+       @order.user_id = current_user.id
+     end
      @order.shipping = 5
       @order.save
       session[:order_id] = @order.id
@@ -74,6 +76,9 @@ class StoreController < ApplicationController
      @line_items.each do |item|
        total << item.total
      end
+     if user_signed_in?
+       @order.user_id = current_user.id
+     end
      subtotal = total.reduce(:+)
      @order.subtotal = subtotal.to_f
      @order.save
@@ -83,6 +88,9 @@ class StoreController < ApplicationController
       @provinces = Province.all
        id = params[:id].to_i
        @order = current_order
+       if user_signed_in?
+         @order.user_id = current_user.id
+       end
       province_id = params[:order][:province_id].to_i
       @order.province_id = province_id
       province = Province.find(province_id)
@@ -104,8 +112,9 @@ class StoreController < ApplicationController
 
    def payment
     @categories = Category.all
+    
     @order = current_order
-   @line_items = @order.line_items
+    @line_items = @order.line_items
    end
 
    def remove_from_cart
