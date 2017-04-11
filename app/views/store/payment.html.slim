@@ -65,6 +65,18 @@
                   strong = number_to_currency(current_order.total)
                 hr/
               .col-md-12.text-center style='height:100px'
-                button#singlebutton.btn.btn-primary name="singlebutton"  Process Payment
+                / button#singlebutton.btn.btn-primary name="singlebutton"  Process Payment
+              = form_tag charges_path do
+                article
+                  - if flash[:error].present?
+                    #error_explanation
+                      p= flash[:error]
+                  label.amount
+                    span
+                      | Amount: #{number_to_currency(current_order.total)}
+                script.stripe-button data-amount="#{current_order.total * 100}" data-description="#{@description}" data-key="#{Rails.configuration.stripe[:publishable_key]}" data-locale="auto" src="https://checkout.stripe.com/checkout.js" 
+
+          
+                
                 
 = render partial: 'layouts/footer'

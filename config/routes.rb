@@ -42,6 +42,8 @@ Rails.application.routes.draw do
    devise_scope :user do
    get 'logout' => 'devise/sessions#destroy'
    patch 'store/:id/save_profile', to: 'users/registrations#update'
+
+    resources :charges
  end
 #
 # devise_for :users, skip: [:sessions]

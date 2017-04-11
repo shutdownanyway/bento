@@ -1,0 +1,11 @@
+= render partial: 'layouts/header'
+.container
+  .row
+    .col-4 
+      = render partial: 'layouts/left'
+    .col-8
+      .row
+        p.text-center
+          | Thanks, you paid 
+          strong = number_to_currency(current_order.total)
+= render partial: 'layouts/footer'
