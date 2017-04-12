@@ -13,9 +13,9 @@ ActiveAdmin.register OrderStatus do
 # end
 permit_params :name
 actions :all, except: [:new, :destroy]
-index do
-  selectable_column
-    id_column
-   column :name
-end
+# index do
+#   selectable_column
+#     id_column
+#    column :name
+# end
 end
