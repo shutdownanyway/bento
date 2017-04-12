@@ -18,7 +18,7 @@ end
 def to_s
   display_name
 end
-permit_params :name.to_s
+permit_params :name
 actions :all, except: [:new, :destroy]
 # index do
 #   selectable_column
