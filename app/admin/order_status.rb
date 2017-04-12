@@ -11,11 +11,14 @@ ActiveAdmin.register OrderStatus do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-permit_params :name
+permit_params :name.to_s
 actions :all, except: [:new, :destroy]
 # index do
 #   selectable_column
 #     id_column
 #    column :name
 # end
+def to_s
+  display_name
+end
 end
