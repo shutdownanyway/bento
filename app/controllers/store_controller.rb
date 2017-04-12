@@ -8,6 +8,7 @@ class StoreController < ApplicationController
 
       @products = Product.order(updated_at: :desc).all.page params[:page]
   @line_item = current_order.line_items.new
+
   end
 
   def show
@@ -112,9 +113,10 @@ class StoreController < ApplicationController
 
    def payment
     @categories = Category.all
-    
+
     @order = current_order
     @line_items = @order.line_items
+    delete_abandoned
    end
 
    def remove_from_cart
@@ -124,6 +126,10 @@ class StoreController < ApplicationController
   @line_item = @order.line_items.where('product_id =?', params[:id]).first
   @line_item.destroy
   @line_items = @order.line_items
+  if @line_items.count == 0
+    @order.destroy
+    session[:order_id] = nil
+  end
   redirect_back(fallback_location: root_path)
     #  line = LineItem.where('product_id = ?', id)
     #  line.each do |item|

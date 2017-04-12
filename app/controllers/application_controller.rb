@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_order
+  helper_method :delete_abandoned
      before_action :configure_permitted_parameters, if: :devise_controller?
 
     def current_order
@@ -12,6 +13,15 @@ class ApplicationController < ActionController::Base
     end
    @categories = Category.all
 
+  def delete_abandoned
+    line_items = LineItem.where("created_at < ?", 1.day.ago)
+    line_items.each do |item|
+      order = Order.find(item.order_id)
+      if order.order_status_id == 1
+        item.destroy
+      end
+    end
+  end
 
 
  protected
