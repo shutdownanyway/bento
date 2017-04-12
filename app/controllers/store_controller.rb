@@ -1,8 +1,5 @@
 class StoreController < ApplicationController
   before_action :initialize_session
-  #before_filter :configure_permitted_parameters, if: :devise_controller?
-#  attr_accessor :pro
-  # before_action :increment_visit_count
   def index
     @categories = Category.all
 
@@ -37,8 +34,6 @@ class StoreController < ApplicationController
     product = Product.find(id)
     price = product.price
     session[:cart_list] << id unless session[:cart_list].include?(id)
-    #session[:added_to_cart] +=1
-    #@cart_items = session[:added_to_cart]
       @order = current_order
     @line_item = @order.line_items.new(quantity: 1, product_id: id, price: price, total: price, session: request.session.id )
      @order.order_status_id = 1
@@ -49,24 +44,6 @@ class StoreController < ApplicationController
       @order.save
       session[:order_id] = @order.id
     redirect_back(fallback_location: root_path)
-    # session[:visit_count] += 1
-    # @visit_count = session[:visit_count]
-
-
-    # product = Product.find(session[:cart_list])
-    #
-    # product.each do |item|
-    #   LineItem.create(product_id: item.id, price: item.price, quantity: 1, total: item.price, session: request.session.id )
-    # end
-
-    # items = LineItem.find(session[:cart_list])
-    #
-    #   items.each do |item|
-    #     LineItem.create(product_id: item.product.id, price: item.product.price, quantity: 1,
-    #      total: item.price, session: request.session.id )
-    #   end
-
-#  end
    end
    def checkout
      @categories = Category.all
@@ -131,91 +108,17 @@ class StoreController < ApplicationController
     session[:order_id] = nil
   end
   redirect_back(fallback_location: root_path)
-    #  line = LineItem.where('product_id = ?', id)
-    #  line.each do |item|
-    #    if item.session == request.session.id
-    #      item.destroy
-    #    end
-    #  end
-    #  redirect_back(fallback_location: root_path)
    end
 
    def cart_list
     @categories = Category.all
     @line_items = current_order.line_items
-    # @line_item = Array.new
-    # id = params[:id].to_i
-    # line = LineItem.where('session = ?', request.session.id)
-    # line.each do |item|
-    #   if item.session == request.session.id
-    #     @product = Product.find(session[:cart_list])
-    #
-    #     @product.each do |pro|
-    #       pro.quantity = item.quantity
-    #       @pro = pro.quantity
-    #
-    #     end
-    #     return @product
-    #   end
-  # end
-     #session[:cart_list].each do |id|
-    #  @line_item << LineItem.where('product_id = ?', id)
-    # end
-  #   return @line_item
-#  Product.find(session[:cart_list])
-#  LineItem.where(product_id: [session[:cart_list]])
-    # line_item = LineItem.all
-    #
-    # line_item.each do |item|
-    #   if item.session == request.session.id
-    #     @line_item =  LineItem.where('product_id = ?', session[:cart_list])
-    #   end
-    #
-    #   return @line_item
-    #LineItem.where('product_id = ?', session[:cart_list]).where('session = ?', request.session.id)
-    #LineItem.where('session = ?', request.session.id).where(product_id: [session[:cart_list]]) kvelas achvenebs
-
-  #  line_item = LineItem.where('session = ?', request.session.id).where(product_id: [session[:cart_list]]).group('id')
-
-    # line_item.each do |item|
-    #   @line = Product.find(item.product_id)
-    # end
-
-    #return @line
-
-    #LineItem.find(:conditions => ['product_id = ?', session[:cart_list]]).first
-    #end
-    #LineItem.find(:all, :conditions => ['product_id = ?', session[:cart_list]])
-    # product = Product.find(session[:cart_list])
-    #
-    #  product.each do |item|
-    #    item.update_columns(quantity: 1)
-    #  end
-
    end
 
    def update_quantity
-     id = params[:id].to_i
-     #@line_item = LineItem.find(params[:id])
-    #  @line_item = LineItem.where('product_id = ?', params[:id]).first
-    # # if @line_item.session == request.session.id
-    #   @line_item.quantity = params[:item][:quantity]
-    #    @line_item.update_columns(quantity: @line_item.quantity)
-  #   end
-    #  @line_item.each do |item|
-    #    if item.session == request.session.id
-        # item.quantity = 6
-      #    item.update_columns(quantity: item.product.quantity)
-    #      #item.save
-    #    end
-  #    end
-  #  @line_item = Product.find(params[:id])
-  #  @line_item.quantity = params[:item][:quantity]
-  #  @line_item.update_columns(quantity: @line_item.quantity)
+      id = params[:id].to_i
       @order = current_order
       @line_item = @order.line_items.find(params[:id])
-    #  @line_item.quantity = params[:item][:quantity]
-
       quantity = params[:item][:quantity].to_i
       price = params[:item][:price].to_f
       total = quantity * price
@@ -224,9 +127,6 @@ class StoreController < ApplicationController
     redirect_back(fallback_location: root_path)
    end
 
-  # def sign_out
-  #     redirect_back(fallback_location: root_path)
-  # end
 
   def profile
     @categories = Category.all
@@ -236,25 +136,20 @@ class StoreController < ApplicationController
 
   def save_profile
     @user = User.find(current_user.id)
-    #@user.name = params[:name].to_s
     name =  params[:name].to_s
     @user.update_columns(name: name)
-  #  @user.save
+
   end
 
 
   private
 
   def initialize_session
-    # session[:visit_count] ||= 0
+
     session[:cart_list] ||= []
-    #session[:added_to_cart] ||= 0
+
   end
 
-  #  def increment_visit_count
-  #    session[:visit_count] += 1
-  #    @visit_count = session[:visit_count]
-  #  end
 
 
    def number_of_cart_items
@@ -264,9 +159,6 @@ class StoreController < ApplicationController
    def line_item_params
      params.require(:item).permit(:quantity, :product_id)
   end
-  # def configure_permitted_parameters
-  #    devise_parameter_sanitizer.for(:account_update) << :name ## add the attributes you want to permit
-  # end
    helper_method :cart_list
    helper_method :number_of_cart_items
 end
