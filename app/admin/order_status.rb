@@ -15,9 +15,9 @@ ActiveAdmin.register OrderStatus do
 # self.name # or whatever column you want
 # end
 
-# def to_s
-#   display_name
-# end
+def to_s
+  display_name
+end
 permit_params :name.to_s
 actions :all, except: [:new, :destroy]
 # index do
