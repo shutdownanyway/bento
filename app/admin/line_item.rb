@@ -15,4 +15,7 @@ permit_params :product_id, :order_id, :price, :quantity, :total
 #scope :all, default: true
 #scope ("Abandoned") { |item| item.joins(:order).group("id").having("count(orders.order_status_id) = 1")}
 #scope ("Abandoned") { |item| item.orders.group_by("id").having("count(orders.order_status_id) = 1")}
+def display_name
+product.name # or whatever column you want
+end
 end
