@@ -5,39 +5,40 @@
       = render partial: 'layouts/left'
     .col-8
       .row
-       .col-lg-6.col-md-6.col-sm-6.col-xs-12.col-md-pull-6.col-sm-pull-6
-          .panel.panel-info
-            .panel-heading 
-            .panel-body
-              .form-group
-                .col-md-12
-                  h4 Shipping Information
-              .form-group
-                .col-md-12
-                  strong Your Name:
-                  input.form-control name="name" type="text" value="" /
-              .form-group
-                .col-md-12
-                  strong Address:
-                .col-md-12
-                  input.form-control name="address" type="text" value="" /
-              .form-group
-                .col-md-12
-                  strong City:
-                .col-md-12
-                  input.form-control name="city" type="text" value="" /  
-              .form-group
-                .col-md-6.col-xs-12
-                  strong Postal Code:
-                  input.form-control name="postal_code" type="text" value="" 
-              .form-group
-                .col-md-12
-                  strong Province:
-                  = form_for 'order', :url => {:controller => 'store', :action => 'calculate_total', 
-                    id: current_order.id,  method: :post} do |f|
-                     .field
-                         = f.collection_select(:province_id, Province.all, :id, :name,{}, {:class=>'form-control'})
-                         = submit_tag 'Proceed to Payment', 'data-disable-with' => false
+      -if user_signed_in?
+         .col-lg-6.col-md-6.col-sm-6.col-xs-12.col-md-pull-6.col-sm-pull-6
+            .panel.panel-info
+              .panel-heading 
+              .panel-body
+                .form-group
+                  .col-md-12
+                    h4 Shipping Information
+                .form-group
+                  .col-md-12
+                    strong Address:
+                  .col-md-12
+                    p = current_user.address
+                .form-group
+                  .col-md-12
+                    strong City:
+                  .col-md-12
+                    p = current_user.city
+                .form-group
+                  .col-md-6.col-xs-12
+                    strong Postal Code:
+                    p = current_user.postal_code
+                .form-group
+                  .col-md-12
+                    strong Province:
+                    p = current_user.province.name
+                    a.btn.btn-info.btn-lg href=edit_user_registration_path 
+                      span.glyphicon.glyphicon-shopping-cart
+                      | Edit Address
+                    = form_for 'order', :url => {:controller => 'store', :action => 'calculate_total', 
+                      id: current_order.id,  method: :post} do |f|
+                        .field
+                           = submit_tag 'Proceed to Payment', 'data-disable-with' => false
+                           
 
                 
 = render partial: 'layouts/footer'

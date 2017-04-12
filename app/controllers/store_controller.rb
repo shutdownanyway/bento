@@ -69,7 +69,9 @@ class StoreController < ApplicationController
        if user_signed_in?
          @order.user_id = current_user.id
        end
-      province_id = params[:order][:province_id].to_i
+       user = User.find(@order.user_id)
+      #province_id = params[:order][:province_id].to_i
+      province_id = user.province_id.to_i
       @order.province_id = province_id
       province = Province.find(province_id)
       gst =  province.gst / 100
