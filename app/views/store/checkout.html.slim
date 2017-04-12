@@ -38,7 +38,9 @@
                       id: current_order.id,  method: :post} do |f|
                         .field
                            = submit_tag 'Proceed to Payment', 'data-disable-with' => false
-                           
+      -else
+        p.text-center
+          | Please #{link_to "login", new_user_session_path } before continuing.
 
                 
 = render partial: 'layouts/footer'
