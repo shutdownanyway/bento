@@ -17,7 +17,8 @@ class RegistrationsController < Devise::RegistrationsController
                                  :province_id,
                                  :address,
                                  :city,
-                                 :postal_code)
+                                 :postal_code,
+                                 :stripe_customer_id)
   end
 
   def account_update_params
@@ -31,6 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
                                  :province_id,
                                  :address,
                                  :city,
-                                 :postal_code)
+                                 :postal_code,
+                                 :stripe_customer_id)
   end
 end

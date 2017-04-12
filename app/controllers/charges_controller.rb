@@ -28,10 +28,14 @@ class ChargesController < ApplicationController
                                    currency:    'cad')
    if @charge.paid && @charge.amount == dollars_to_cents(current_order.total)
     #
-     @order = current_order
-     @order.update_columns(order_status_id: 2)
+     order = current_order
+     order.update_columns(order_status_id: 2, stripe_charge_id: @charge.id)
        session[:cart_list].clear
         session[:order_id] = nil
+    if current_user.stripe_customer_id.nil?
+      customer = current_user
+      customer.update_columns(stripe_customer_id: @customer.id)
+    end
    end
 
  rescue Stripe::CardError => e

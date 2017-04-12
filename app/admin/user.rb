@@ -68,7 +68,8 @@ ActiveAdmin.register User do
          column("City") {|user| user.city}
          column("Postal Code") {|user| user.postal_code}
          column("Province") {|user| user.province}
-          column("Email") {|user| user.email}
+        column("Email") {|user| user.email}
+        column("Stripe") {|user| user.stripe_customer_id}
     #   panel "Order History" do
        table_for(user.orders) do
 
