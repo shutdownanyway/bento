@@ -8,6 +8,16 @@ class StoreController < ApplicationController
 
   end
 
+  def search
+  end
+
+  def search_results
+  
+    @categories = Category.all
+
+    @found_products = Product.keyword_search(params[:search_keywords])
+  end
+
   def show
     @product = Product.find(params[:id])
     @categories = Category.all

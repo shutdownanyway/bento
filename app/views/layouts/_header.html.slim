@@ -48,7 +48,11 @@ javascript:
       | Shopping Cart (
       = session[:cart_list].size
       | ) 
-    form.form-inline.my-2.my-lg-0
-        input.form-control.mr-sm-2 type="text" placeholder="Search"
-        button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Search
+    / form.form-inline.my-2.my-lg-0
+    /     input.form-control.mr-sm-2 type="text" placeholder="Search" 
+    /     button.btn.btn-outline-success.my-2.my-sm-0 type="submit" = link_to('Search',search_path) 
+    = form_tag search_results_path, method: :get, class: 'form form-inline my-2 my-lg-0' do |f|
+      = text_field_tag(:search_keywords, "", class: "form-control mr-sm-2")
+      = submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0"
+
     

@@ -29,7 +29,7 @@ ActiveAdmin.register User do
        table_for(user.orders) do
 
          column("Order", :sortable => :id) {|order| link_to "##{order.id}", admin_order_path(order) }
-         column("State")                   {|order| status_tag(order.order_status.id) }
+         column("State")                   {|order| status_tag(order.order_status.name) }
          column("Date", :sortable => :checked_out_at){|order| pretty_format(order.created_at) }
          column("Products") {
            |order|

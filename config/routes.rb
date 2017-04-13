@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   get 'checkout', to: 'store#checkout'
   get 'payment', to: 'store#payment'
 
+  get 'search' => 'store#search', as: 'search'
+  get 'search_results' => 'store#search_results', as: 'search_results'
+
   #patch 'store/:id/save_profile', to: 'store#save_profile'
 
   get 'profile', to: 'store#profile'
