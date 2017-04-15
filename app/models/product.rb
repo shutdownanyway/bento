@@ -3,8 +3,8 @@ class Product < ApplicationRecord
   belongs_to :category
 
 
-  def self.keyword_search(keywords)
-    keywords = "%" + keywords + "%"
-    Product.where("name LIKE ? OR description LIKE ?", keywords, keywords)
-  end
+  # def self.keyword_search(keywords, category)
+  #   keywords = "%" + keywords + "%"
+  #   Product.where("name ILIKE ? OR description ILIKE ? AND category_id = ?", keywords, keywords, category)
+  # end
 end

@@ -5,10 +5,15 @@
       = render partial: 'layouts/left'
     .col-8
       .row
-        - if @found_products.empty?
-          | no results found
-        -else 
-          = render partial: 'products/product', collection: @found_products, locals: {full_details: false}
-        
+         - if params[:search_category] == ''
+            = render partial: 'products/product', collection: @found_products_any_category,
+            locals: {full_details: false}
+            - if @found_products_any_category.empty?
+              | No results found.
+         - else 
+            = render partial: 'products/product', collection: @found_products_with_category,
+            locals: {full_details: false}
+            - if @found_products_with_category.empty?
+              | No results found.
       /== paginate @products
 = render partial: 'layouts/footer'
