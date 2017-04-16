@@ -16,20 +16,20 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-
-$(document).ready(function() {
-  $("a.fancybox").fancybox({
-    helpers: {
-              title : {
-                  type : 'inside'
-              }
-          }
-        // beforeLoad: function() {
-        //       this.title = $(this.element).attr('caption');
-        //     }
-  });
-  //alert ("works");
-});
+// 
+// $(document).ready(function() {
+//   $("a.fancybox").fancybox({
+//     helpers: {
+//               title : {
+//                   type : 'inside'
+//               }
+//           }
+//         // beforeLoad: function() {
+//         //       this.title = $(this.element).attr('caption');
+//         //     }
+//   });
+//   //alert ("works");
+// });
 //
 // $(window).load(function () {
 //   $("a.fancybox").fancybox();
