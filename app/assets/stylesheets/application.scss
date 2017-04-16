@@ -14,14 +14,14 @@
  *      require_self
  *      require bootstrap-social
  *      require font-awesome
- *
+ *=require fancybox
  */
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
- @import 'fancybox';
+
  @import 'bootstrap';
  @import 'font-awesome.css';
- 
+ @import 'fancybox';
 
  //
  // #fancybox-tmp{
