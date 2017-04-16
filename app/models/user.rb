@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :province
   has_many :orders
-
   #search_methods :orders
 #  scope :orders, ->(id) { joins(:line => :group).where("groups.id = ?", group_id) }
 end
