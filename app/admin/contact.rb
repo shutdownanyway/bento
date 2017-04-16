@@ -11,7 +11,7 @@ ActiveAdmin.register Contact do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-menu label: "Contact Page"
+menu label: "Contact"
 # menu parent: "Products"
 permit_params :title, :text, :phone, :facebook, :twitter, :instagram, :email
 actions :all, except: [:new, :destroy]

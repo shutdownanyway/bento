@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'about/index'
+
   devise_for :users,  path: '', path_names: { sign_in: 'login', sign_out: 'logout'},   controllers: {  registrations: "registrations" }
   get 'category/index', to: 'category#index'
 
   get 'contact', to: 'contact#index', only: [:index]
+  get 'about', to: 'about#index', only: [:index]
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

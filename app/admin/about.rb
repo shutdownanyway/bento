@@ -11,5 +11,7 @@ ActiveAdmin.register About do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+menu label: "About"
+permit_params :title, :text, :image
+actions :all, except: [:new, :destroy]
 end
