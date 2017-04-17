@@ -72,7 +72,7 @@ class StoreController < ApplicationController
        @order.user_id = current_user.id
      end
      subtotal = total.reduce(:+)
-     @order.subtotal = subtotal.to_f
+     @order.subtotal = subtotal.to_f.round(2)
      @order.save
    end
 
@@ -96,9 +96,9 @@ class StoreController < ApplicationController
       order_gst = subtotal * gst
       order_pst = subtotal * pst
       order_hst = subtotal * hst
-      @order.gst = order_gst
-      @order.pst = order_pst
-      @order.hst = order_hst
+      @order.gst = order_gst.round(2)
+      @order.pst = order_pst.round(2)
+      @order.hst = order_hst.round(2)
       @order.total =  @order.gst  +  @order.pst + @order.hst + shipping + subtotal
       @order.save
       redirect_to payment_url
