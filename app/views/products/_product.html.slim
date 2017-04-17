@@ -26,18 +26,19 @@
             | % OFF 
         h6 style=("text-decoration: line-through; color: #ff6666;") 
           = number_to_currency product.price 
-        h6 
+        h6
           = number_to_currency (product.price - (product.price * product.discount / 100))
       -else 
-        h6.float-right 
+        h6
           = number_to_currency product.price
-      p 
+      - if full_details
+          p = product.description
+          p = link_to 'Go Back', root_path
+      - else
+          p = link_to 'Full Details', product
+      p.small 
         strong> Category:
         = product.category.name
-        - if full_details
-            p = product.description
-        - else
-            p = link_to 'More Details', product
       -if Product.find(session[:cart_list]).include?(product)    
         = button_to("Remove from Cart", remove_from_cart_store_path(product), method: :post, class: "btn btn-primary btn-sm")
       -else
