@@ -15,11 +15,11 @@ class StoreController < ApplicationController
 
     @categories = Category.all
     keywords = '%'+ params[:search_keywords] + '%'
-
-    @found_products_with_category = Product.where("name ILIKE ? OR description ILIKE ? AND category_id = ?",
-    keywords, keywords, params[:search_category])
     @found_products_any_category =  Product.where("name ILIKE ? OR description ILIKE ?",
-    keywords,params[:search_keywords])
+    keywords,keywords)
+    @found_products_with_category = Product.order(name: :asc).where("(name ILIKE ? OR description ILIKE ?) AND category_id = ?",
+    keywords, keywords, params[:search_category])
+
   end
 
   def show

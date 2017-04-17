@@ -53,7 +53,7 @@ javascript:
     /     button.btn.btn-outline-success.my-2.my-sm-0 type="submit" = link_to('Search',search_path) 
     = form_tag search_results_path, method: :get, class: 'form form-inline my-2 my-lg-0' do |f|
       = text_field_tag(:search_keywords, "", class: "form-control mr-sm-2")
-      = select_tag :search_category, options_for_select(@categories.collect{|u| [u.name, u.id]}),
+      = select_tag :search_category, options_for_select(Category.all.collect{|u| [u.name, u.id]}),
                     include_blank: 'All',  class: "form-control mr-sm-2"
       = submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0"
       

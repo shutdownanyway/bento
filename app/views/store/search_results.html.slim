@@ -10,7 +10,7 @@
             locals: {full_details: false}
             - if @found_products_any_category.empty?
               | No results found.
-         - else 
+         - else
             = render partial: 'products/product', collection: @found_products_with_category,
             locals: {full_details: false}
             - if @found_products_with_category.empty?
