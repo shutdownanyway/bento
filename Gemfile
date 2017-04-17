@@ -76,3 +76,5 @@ gem 'mini_magick'
 gem 'fog'
 
 gem 'fancybox-rails'
+
+gem 'jquery-turbolinks'

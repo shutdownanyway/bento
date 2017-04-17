@@ -1,16 +1,22 @@
 .col-sm-4.col-lg-4.col-md-4
+  / javascript:
+  /     $(document).ready(function() {
+  /      $("a.fancybox").fancybox({
+  /         helpers: {
+  /                   title : {
+  /                       type : 'inside'
+  /                   }
+  /               },
+  /        parent: 'body'
+  /       })
+  /     })
+  / 
   javascript:
-      $(document).ready(function() {
-       $("a.fancybox").fancybox({
-          helpers: {
-                    title : {
-                        type : 'inside'
-                    }
-                },
-         parent: 'body'
-        })
-      })
-  
+    var fancybox = function(){
+        $(".fancybox").fancybox()
+        {parent: 'body'}
+    }
+    $(document).on("page:load ready", fancybox)
   .thumbnail
     - if product.image.present?
       - if full_details
