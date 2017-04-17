@@ -17,7 +17,7 @@
         a = link_to product.image.url, :class=> 'fancybox', :title => product.name
           = image_tag product.image.thumb.url
     - else
-       img alt="" src="http://placehold.it/320x150"
+       img alt="" src="http://placehold.it/150x150"
     .caption
       h5 = product.name
       - if product.discount > 0
