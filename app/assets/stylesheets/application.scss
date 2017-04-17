@@ -56,6 +56,7 @@
  .caption {
     height: 300px;
     overflow: hidden;
+    margin-top: 10px;
     // h4{
     //   white-space: nowrap;
     // }
@@ -67,9 +68,9 @@
         padding: 9px;
         color: #333;
     }
-    img {
-        width: 100%;
-    }
+    // img {
+    //     width: 100%;
+    // }
 }
 
 .list-group-item.active{
